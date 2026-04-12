@@ -1,0 +1,310 @@
+/* 
+  Zimpyl Design System 
+  Version: 1.0.0 (Vercel Auto-deploy Trigger)
+  Author: Antigravity
+*/
+
+/* --- 1. Design Tokens (:root) --- */
+:root {
+  /* Colors - Figma Design Tokens */
+  --color-primary-bg: #EEEEEE;
+  --color-primary-text: #141314;
+  
+  --color-secondary-bg: #141314;
+  --color-secondary-text: #EEEEEE; /* Bruges når baggrunden er #141314 */
+  
+  --color-accent: #FB460D;
+  
+  /* Fallback aliases for existing components if any */
+  --color-bg: var(--color-primary-bg);
+  --color-text: var(--color-primary-text);
+  --color-primary: var(--color-accent);
+  
+  /* Typography */
+  --font-primary: "Inter Tight", system-ui, -apple-system, sans-serif;
+  --font-secondary: "Roboto Mono", monospace;
+  
+  --font-family: var(--font-primary);
+  
+  /* Layout */
+  --max-width: 1440px;
+  --container-padding: 64px;
+
+  /* Spacing Scale (Standardiseret) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Elevation / Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Border Radius */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Support (Optional but recommended) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-text: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-surface: #1e293b;
+    --color-border: #334155;
+  }
+}
+
+/* --- 2. Modern Reset (Josh Comeau style) --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--size-base);
+  min-height: 100vh;
+  position: relative;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* --- 3. Base Styles --- */
+h1, h2, h3, h4, h5, h6 {
+  line-height: var(--lh-tight);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+h1 { font-size: var(--size-4xl); letter-spacing: -0.02em; }
+h2 { font-size: var(--size-3xl); letter-spacing: -0.01em; }
+h3 { font-size: var(--size-2xl); }
+h4 { font-size: var(--size-xl); }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- 4. Utility Classes --- */
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* 12-Column Grid System */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+/* Theme Utilities */
+.theme-dark {
+  background-color: var(--color-secondary-bg);
+  color: var(--color-secondary-text);
+}
+
+.theme-light {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-text);
+}
+
+/* Typography Utilities */
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+
+.text-30 { font-size: 30px; line-height: 1.4; }
+.text-90 { font-size: 90px; line-height: 1; }
+.text-base { font-size: var(--size-base); line-height: 1.5; }
+
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-regular { font-weight: var(--weight-normal); }
+
+/* Spacing Utilities */
+.py-section {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+.mb-xl { margin-bottom: 120px; }
+.mb-lg { margin-bottom: 64px; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-8 { gap: var(--space-8); }
+
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Spacing Helpers */
+.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.py-24 { padding-top: var(--space-24); padding-bottom: var(--space-24); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+/* Components (Examples) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-base); /* 16px */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-md); /* 0px */
+  transition: var(--transition-base);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-secondary-bg); /* #141314 */
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+}
+
+.btn-footer-cta {
+  background-color: var(--color-accent);
+  color: #141314;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.btn-footer-cta:hover {
+  filter: brightness(0.9);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* Header */
+.site-header {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-8);
+}
+
+.nav-link {
+  color: var(--color-secondary-text);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-base);
+  text-decoration: none;
+  font-family: var(--font-primary);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-24);
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* Defining container query context to scale text precisely */
+  container-type: inline-size;
+}
+
+.hero-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-primary);
+  /* Skaleret ned for at give 'space-between' mere plads at fordele mellem ordene */
+  font-size: 10cqi;
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: var(--color-secondary-text);
+  
+  /* The solid background hides the line behind it, creating air around the text */
+  background-color: var(--color-secondary-bg);
+  
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+@media (min-width: 1440px) {
+  .hero-title {
+    font-size: 131px; /* Låst maksimal størrelse der svarer til 10cqi margin max-width */
+  }
+}
