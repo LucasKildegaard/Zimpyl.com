@@ -26,6 +26,24 @@
   
   --font-family: var(--font-primary);
   
+  /* Typography Scale */
+  --size-base: 16px;
+  --size-xl: 1.25rem; /* 20px */
+  --size-2xl: 1.5rem; /* 24px */
+  --size-3xl: 1.875rem; /* 30px */
+  --size-4xl: 2.25rem; /* 36px */
+  
+  /* Font Weights */
+  --weight-normal: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  
+  /* Line Heights */
+  --lh-tight: 1.2;
+  --lh-base: 1.5;
+  
+  /* Hover Colors */
+  --color-primary-hover: #D73C0B; /* Mørkere orange */
   /* Layout */
   --max-width: 1440px;
   --container-padding: 64px;
